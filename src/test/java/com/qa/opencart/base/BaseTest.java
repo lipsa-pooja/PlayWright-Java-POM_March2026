@@ -22,6 +22,7 @@ public class BaseTest {
 
 	@Parameters({ "browser" })
 	@BeforeTest
+//public void setup()
 	public void setup(String browserName) {
 		pf = new PlaywrightFactory();
 
@@ -33,11 +34,19 @@ public class BaseTest {
 
 		page = pf.initBrowser(prop);
 		homePage = new HomePage(page);
+		loginPage =new LoginPage(page);
 	}
 
 	@AfterTest
 	public void tearDown() {
-		page.context().browser().close();
+
+		//page.context().browser().close();
+		if (PlaywrightFactory.getPage() != null) {
+			PlaywrightFactory.getPage().context().browser().close();
+		}
+		if (PlaywrightFactory.getPlaywright() != null) {
+			PlaywrightFactory.getPlaywright().close();
+		}
 	}
 
 }

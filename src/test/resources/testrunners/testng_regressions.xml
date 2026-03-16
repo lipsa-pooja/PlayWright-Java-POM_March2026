@@ -5,8 +5,9 @@
 	parallel="tests" verbose="4">
 
 	<listeners>
-		<listener
-			class-name="com.qa.opencart.listeners.ExtentTestListeners" />
+
+		<listener	class-name="com.qa.opencart.listeners.ExtentTestListeners" />
+		<listener   class-name="com.qa.opencart.listeners.ExtentSuiteListener"/>
 
 	</listeners>
 

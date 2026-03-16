@@ -1,13 +1,15 @@
 package com.qa.opencart.listeners;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class ExtentManager {
+
     private static ExtentReports extent;
 
-    public static ExtentReports getExtentInstance() {
+    public static synchronized ExtentReports getExtentInstance() {
         if (extent == null) {
-            String reportPath = System.getProperty("user.dir") + "/build/ExtentReport.html";
+            String reportPath = System.getProperty("user.dir") + "/extent-report/ExtentReport.html";
 
             ExtentSparkReporter sparkReporter = new ExtentSparkReporter(reportPath);
             sparkReporter.config().setDocumentTitle("Playwright Automation Report");
@@ -22,5 +24,4 @@ public class ExtentManager {
         }
         return extent;
     }
-
 }

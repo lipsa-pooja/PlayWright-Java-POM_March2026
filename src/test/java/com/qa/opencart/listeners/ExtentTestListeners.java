@@ -1,4 +1,5 @@
 package com.qa.opencart.listeners;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
@@ -6,7 +7,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-public class ExtentTestListeners implements ITestListener{
+public class ExtentTestListeners implements ITestListener {
 
     private static final ExtentReports extent = ExtentManager.getExtentInstance();
     private static final ThreadLocal<ExtentTest> test = new ThreadLocal<>();
@@ -42,7 +43,6 @@ public class ExtentTestListeners implements ITestListener{
 
     @Override
     public void onFinish(ITestContext context) {
-        extent.flush();
-        System.out.println("Extent report generated successfully.");
+        // do nothing here for parallel test contexts
     }
 }
